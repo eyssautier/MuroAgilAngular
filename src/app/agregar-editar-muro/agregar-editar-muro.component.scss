@@ -1,0 +1,52 @@
+.contenedor {
+    width: 450px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    color: #212529;
+    border-width: medium;
+    border-radius: calc(.75rem - 1px);
+}
+
+.botonProcesar {
+    width: 47%;
+    margin-top: 15px;
+}
+
+table {
+    width: 100%;
+    margin: 0px;
+    padding-bottom: 0px;
+    background: rgb(255, 255, 255);
+}
+
+table tr th {
+    text-align: center;
+    color: #404040;
+    vertical-align: middle;
+    font-size: small;
+}
+
+.contenedorTituloEtapas {
+    display: inline;
+    vertical-align: middle;
+}
+
+.contenedorPlus {
+    float: right;
+}
+
+.etapa {
+    font-size: small;
+    cursor: pointer;
+}
+
+#eliminoEtapa {
+    margin-top: 15px;
+    margin-bottom: 0px;
+    display: none;
+}
+
+#eliminoEtapa .card-body {
+    width: 100%;
+    padding-bottom: 5px;
+}

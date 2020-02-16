@@ -1,0 +1,16 @@
+<div class="card border-danger contenedor">
+    <div class="card-header text-white bg-danger align-items-center">
+        <strong>¡Atención! Eliminación en Proceso</strong>
+    </div>
+    <div class="card-body width100">
+        <label>¿Está seguro que desea eliminar el permiso seleccionado?</label>
+        <div *ngIf="errors.length > 0" class="form-group alert alert-danger mb-0">
+            <label class="text-danger"><b>¡Ocurrió un Error!</b></label>
+            <div *ngFor="let error of errors" class="text-danger">
+                {{ error }}
+            </div>
+        </div>
+        <button (click)="cancelar()" type="button" class="btn btn-secondary float-left botonProcesar">Cancelar</button>
+        <button (click)="eliminar()" [disabled]="procesando" type="button" class="btn btn-danger float-right botonProcesar">Aceptar</button>
+    </div>
+</div>

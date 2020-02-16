@@ -1,0 +1,72 @@
+<div class="card border-primary contenedor">
+    <div class="card-header text-white bg-primary align-items-center">
+        <strong>{{ titulo }}</strong>
+    </div>
+    <div class="card-body width100">
+        <form [formGroup]="form" (ngSubmit)="grabarMuro()" novalidate>
+            <input formControlName="idMuro" type="hidden"/>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text">Nombre:</label>
+                </div>
+                <input formControlName="nombre" [class.is-invalid]="getError('nombre')" class="form-control" />
+                <span *ngIf="getError('nombre') && getError('nombre').required" class="invalid-feedback">
+                    Se requiere el ingreso del nombre del muro.
+                </span>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            <div class="contenedorTituloEtapas">ETAPAS</div>
+                            <div class="contenedorPlus">
+                                <button (click)="agregarEtapa()" type="button" class="btn btn-success px-2 pt-0 pb-1"><b>+</b></button>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th ngxDroppable [model]="form.get('etapas').controls" (drop)="dropped($event)">
+                            <div ngxDraggable [model]="etapa" formArrayName="etapas" *ngFor="let etapa of form.get('etapas').controls; let i = index;" class="etapa card sortable text-left p-0  m-2">
+                                <div [formGroupName]="i" class="card-header text-center py-2 px-4">
+                                    <input formControlName="id" type="hidden" />
+                                    <div class="input-group">
+                                        <input formControlName="nombre" [class.is-invalid]="getError('etapas.' + i + '.nombre')" type="text" class="form-control" placeholder="Nombre de la Etapa..." />
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-danger" (click)="eliminarEtapa(i)"><b>X</b></button>
+                                        </div>
+                                    </div>
+                                    <input formControlName="posicion" type="hidden" />
+                                </div>
+                            </div>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+            <div #eliminoEtapa id="eliminoEtapa" class="card border-danger">
+                <div class="card-header text-light bg-danger">
+                    <strong>Etapa Eliminada</strong>
+                </div>
+                <div class="card-body">
+                    <label>¿Qué desea hacer con las tareas que se encontraban en la etapa eliminada?</label>
+                    <div class="form-group">
+                        <select formControlName="accionTareas" class="custom-select">
+                            <option value="1">Mover las tareas a la primera etapa.</option>
+                            <option value="2">Mover las tareas a la última etapa.</option>
+                            <option value="3">Eliminar las tareas del muro.</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="errors.length > 0" class="form-group alert alert-danger mt-3 mb-0">
+                <label class="text-danger"><b>¡Ocurrió un Error!</b></label>
+                <div *ngFor="let error of errors" class="text-danger">
+                    {{ error }}
+                </div>
+            </div> 
+            <button (click)="cancelar()" type="button" class="btn btn-secondary float-left botonProcesar">Cancelar</button>
+            <button [disabled]="!form.valid || procesando" type="submit" class="btn btn-success float-right botonProcesar">{{ titulo }}</button>
+        </form>
+    </div>
+</div>

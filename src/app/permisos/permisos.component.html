@@ -1,0 +1,31 @@
+<div class="card border-primary contenedor" [class.oculto]="ocultarPopup">
+    <div class="card-header text-white bg-primary align-items-center">
+        <strong>Permisos - {{ nombreMuro }}</strong>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Permiso</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let permiso of permisos">
+                    <td class="widthLargo">{{ permiso.nombreUsuario }}</td>
+                    <td class="widthCorto text-center">{{ nombrePermiso(permiso.permiso) }}</td>
+                    <td class="widthMedio text-center align-middle">
+                        <button (click)="abrirAgregarEditarPermisoPopup(idMuro, permiso.correoUsuario, permiso.nombreUsuario, permiso.permiso)" class="btn btn-warning btnModPerm" type="button">Modificar</button>
+                        <button (click)="abrirEliminarPermisoPopup(idMuro, permiso.correoUsuario)" class="btn btn-danger btnEliPerm" type="button">Eliminar</button>
+                    </td>
+                </tr>
+                <tr *ngIf="permisos.length == 0">
+                    <td colspan="4" align="center">Su muro no está siendo compartido con otros usuarios.</td>
+                </tr>
+            </tbody>
+        </table>
+        <button (click)="abrirAgregarEditarPermisoPopup(idMuro)" class="btn btn-success btnOtorgPerm" type="button">Otorgar Permiso</button>
+        <button (click)="cancelar()" class="btn btn-secondary btnCancelar" type="button">Cerrar</button>
+    </div>
+</div>

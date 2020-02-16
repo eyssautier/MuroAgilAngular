@@ -1,0 +1,41 @@
+<div class="card border-primary">
+    <div class="card-header text-white bg-primary barraSuperior">
+        <div>
+            <strong>Mis Muros</strong>
+        </div>
+        <a id="btnCrear" class="btn btn-success" role="button" (click)='abrirAgregarEditarMuroPopup()'>Crear Muro</a>
+    </div>
+    <div class="card-body">
+        <table id="tablaMuros" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Permiso</th>
+                    <th>Dueño</th>
+                    <th>Fecha Creación</th>
+                    <th>Fecha Actualización</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let muro of listaMuros">
+                    <td><a [routerLink]="['/muro', muro.idMuro]">{{ muro.nombreMuro }}</a></td>
+                    <td>{{ nombrePermiso(muro.permiso) }}</td>
+                    <td>{{ muro.correoDuenno }}</td>
+                    <td>{{ muro.fechaCreacion }}</td>
+                    <td>{{ muro.fechaUltimaModificacion }}</td>
+                    <td class="grillaAcciones">
+                        <ng-template [ngIf]="muro.permiso == 1" [ngIfElse]="accionesOtros">
+                            <button (click)="abrirPermisosPopup(muro.idMuro, muro.nombreMuro)" type="button" class="btn btn-info">Permisos</button>
+                            <button (click)='abrirAgregarEditarMuroPopup(muro.idMuro)' type="button" class="btn btn-warning" >Modificar</button>
+                            <button (click)='abrirEliminarMuroPopup(muro.idMuro)' type="button" class="btn btn-danger">Eliminar</button>
+                        </ng-template>
+                        <ng-template #accionesOtros>
+                            <button (click)='abrirRenunciarMuroPopup(muro.idMuro)' type="button" class="btn btn-danger">Renunciar</button>
+                        </ng-template>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

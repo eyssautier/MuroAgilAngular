@@ -1,0 +1,65 @@
+.contenedor {
+    width: 600px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    color: #212529;
+    border-width: medium;
+    border-radius: calc(.75rem - 1px);
+}
+
+.contenedor .card-body {
+    width: 100%;
+}
+
+.btnCancelar {
+    width: 10em;
+    float: right;
+    margin: 15px 15px 0px 0px;
+    font-size: 14px;
+    padding: 5px;
+}
+
+.btnOtorgPerm {
+    width: 10em;
+    float: right;
+    margin: 15px 0px 0px;
+    font-size: 14px;
+    padding: 5px;
+}
+
+.btnModPerm {
+    width: 6em;
+    font-size: 12px;
+    padding: 3px 8px;
+    margin-right: 8px;
+}
+
+.btnEliPerm {
+    width: 6em;
+    font-size: 12px;
+    padding: 3px 8px;
+}
+
+.contenedor table{
+    margin-bottom: 0px;
+}
+
+.contenedor table thead {
+    text-align: center;
+}
+
+.widthLargo {
+    width: 50%;
+}
+
+.widthMedio {
+    width: 35%;
+}
+
+.widthCorto {
+    width: 15%;
+}
+
+.oculto {
+    display: none;
+}

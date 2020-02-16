@@ -1,0 +1,45 @@
+<div class="card border-primary contenedor">
+    <div class="card-header text-white bg-primary align-items-center">
+        <strong>{{ titulo }}</strong>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="grabarMuro()" novalidate>
+            <input formControlName="idMuro" type="hidden" />
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text">Correo:</label>
+                </div>
+                <input formControlName="correo" [class.is-invalid]="getError('correo')" class="form-control" />
+                <span *ngIf="getError('correo') && getError('correo').required" class="invalid-feedback">
+                    Se requiere el ingreso del correo del usuario.
+                </span>
+                <span *ngIf="getError('correo') && getError('correo').email" class="invalid-feedback">
+                    El formato del correo ingresado no es válido.
+                </span>
+            </div>
+            <div *ngIf="nombre" class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text">Nombre:</label>
+                </div>
+                <input formControlName="nombre" class="form-control" />
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text">Permiso:</label>
+                </div>
+                <select formControlName="permiso" class="custom-select">
+                    <option value="2">Edición</option>
+                    <option value="3">Lectura</option>
+                </select>
+            </div>
+            <div *ngIf="errors.length > 0" class="form-group alert alert-danger mb-3">
+                <label class="text-danger"><b>¡Ocurrió un Error!</b></label>
+                <div *ngFor="let error of errors" class="text-danger">
+                    {{ error }}
+                </div>
+            </div> 
+            <button (click)="cancelar()" type="button" class="btn btn-secondary widthMedio mr-2">Cancelar</button>
+            <button [disabled]="!form.valid || procesando" type="submit" class="btn float-right widthMedio" [class.btn-warning]="!agregando" [class.btn-success]="agregando">{{ textoBoton }}</button>
+        </form>
+    </div>
+</div>

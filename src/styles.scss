@@ -1,0 +1,110 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$MuroAgil-primary: mat-palette($mat-indigo);
+$MuroAgil-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$MuroAgil-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$MuroAgil-theme: mat-light-theme($MuroAgil-primary, $MuroAgil-accent, $MuroAgil-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($MuroAgil-theme);
+
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~datatables.net-dt/css/jquery.dataTables.css';
+@import '@swimlane/ngx-dnd/release/index.css';
+
+.btn-warning, .btn-warning:hover, .btn-warning.disabled,
+.btn-warning:disabled, .btn-warning:not(:disabled):not(.disabled):active,
+.btn-warning:not(:disabled):not(.disabled).active, .btn-warning.focus,
+.btn-warning:focus {
+    color: #fff;
+}
+
+/*.dataTables_wrapper div.dataTables_scrollHeadInner,
+.dataTables_wrapper table{
+    width: 100% !important;
+}*/
+
+.dataTables_wrapper {
+    overflow-x: auto;
+}
+
+.cabecera {
+    width: 100%;
+    padding-top: 1px;
+}
+
+.paginacionSup {
+    display: block;
+    float: right;
+    padding-top: 5px;
+}
+
+.filtro {
+    display: block; 
+    float: left;
+    padding-top: 3px;
+    width: calc(100% - 200px);
+}
+
+.filtro .dataTables_filter,
+.filtro .dataTables_filter label {
+    width: 100%;
+    text-align: left !important;
+}
+
+.filtro input {
+    width: calc(100% - 200px);
+    min-width: 150px;
+}
+
+.paginacionInf {
+    float: right;
+    padding-bottom: 5px;
+}
+html, body { 
+    height: 100%; 
+}
+
+body { 
+    margin: 0; 
+}
+
+.mat-dialog-container {
+    box-shadow: none;
+    background: none;
+}
+
+.width100 {
+    width: 100%;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    border: 1px solid #979797;
+    background-color: #007bff;
+    background: -webkit-gradient(linear, left top, left bottom, from(#2E9AFE), to(#007bff));
+    background: linear-gradient(to bottom, #2E9AFE 0%, #007bff 100%);
+}
+
+input.is-invalid {
+    border-top-right-radius: .25rem !important;
+    border-bottom-right-radius: .25rem !important;
+}

@@ -1,0 +1,73 @@
+div.card-body {
+    width: 100%;
+}
+
+.scrollbar {
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 10px;
+    float: left;
+    width: inherit;
+    background: #fff;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+table {
+    width: inherit;
+    margin: 0px;
+    background: rgb(255, 255, 255);
+}
+
+th {
+    text-align: center;
+    color: #404040;
+    vertical-align: top;
+    font-size: small;
+    position: relative;
+    background: white;
+    z-index: 10;
+}
+
+th button {
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0px 5px 0px 5px;
+    position: absolute;
+    right: 10px;
+    top: 0px;
+}
+
+td {
+    min-width: 15em;
+    position: relative;
+}
+
+.tareaCard {
+    margin-bottom: 15px;
+    font-size: small;
+    position: relative;
+    left: 0px;
+    top: 0px;
+}
+
+.tareaCard span{
+    display: inline;
+    white-space: pre-line;
+}
+
+.tareaCard .card-header {
+    font-weight: bold;
+}
+
+.tareaCard .card-body div{
+    max-height: 107px;
+    overflow-y: hidden;
+}
+
+.detalleTareaEditable {
+    cursor: pointer;
+}

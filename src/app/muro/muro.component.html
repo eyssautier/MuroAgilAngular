@@ -1,0 +1,35 @@
+<div class="card border-primary">
+    <div class="card-header text-white bg-primary align-items-center">
+        <strong>{{ detalleMuro.nombreMuro }}</strong>
+    </div>
+    <div class="card-body">
+        <div class="scrollbar">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th *ngFor="let etapa of detalleMuro.etapas">
+                            {{ etapa.nombre }}
+                            <button *ngIf="detalleMuro.permiso < 3" type="button" class="btn btn-link" (click)="agregarTarea(etapa.id)">+</button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td *ngFor="let etapa of detalleMuro.etapas" [ngStyle]="{'width': anchoColumnas}">
+                            <div *ngFor="let tarea of etapa.tareas" class="tareaCard text-left bg-light sortable p-0" [class.detalleTareaEditable]="detalleMuro.permiso < 3">
+                                <div class="card-header text-center py-1 px-3">
+                                    <span>{{ tarea.titulo }}</span>
+                                </div>
+                                <div class="card-body pt-1 pb-2 px-3">
+                                    <div>
+                                        <span>{{ tarea.descripcion }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="card border-primary contenedor">
+    <div class="card-header text-white bg-primary">
+        <strong>¡Registrarse!</strong>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="formRegistrarse" (ngSubmit)="crearUsuario()" novalidate>
+            <div class="form-group">
+                <label [class.text-danger]="getError('correo')">Correo Electrónico</label>
+                <input formControlName="correo" [class.is-invalid]="getError('correo')" class="form-control" type="email"/>
+                <span *ngIf="getError('correo') && getError('correo').required" class="text-danger">
+                    Se requiere el ingreso del correo electrónico.
+                </span>
+                <span *ngIf="getError('correo') && getError('correo').email" class="text-danger">
+                    Correo electrónico con formato inválido.
+                </span>
+            </div>
+            <div class="form-group">
+                <label [class.text-danger]="getError('nombre')">Nombre</label>
+                <input formControlName="nombre" [class.is-invalid]="getError('nombre')" class="form-control" type="text"/>
+                <span *ngIf="getError('nombre') && getError('nombre').required" class="text-danger">
+                    Se requiere el ingreso de su nombre.
+                </span>
+            </div>
+            <div class="form-group">
+                <label [class.text-danger]="getError('contrasenna')">Contraseña</label>
+                <input formControlName="contrasenna" [class.is-invalid]="getError('contrasenna')" class="form-control" type="password"/>
+                <span *ngIf="getError('contrasenna') && getError('contrasenna').required" class="text-danger">
+                    Se requiere la creación de una contraseña.
+                </span>
+                <span *ngIf="getError('contrasenna') && getError('contrasenna').minlength" class="text-danger">
+                    La contraseña debe tener 8 caracteres mínimo.
+                </span>
+            </div>
+            <div class="form-group">
+                <label [class.text-danger]="getError('repContrasenna')">Confirmar Contraseña</label>
+                <input formControlName="repContrasenna" [class.is-invalid]="getError('repContrasenna')" class="form-control" type="password"/>
+                <span *ngIf="getError('repContrasenna') && getError('repContrasenna').required" class="text-danger">
+                    Se requiere la confirmación de la contraseña.
+                </span>
+                <span *ngIf="getError('repContrasenna') && getError('repContrasenna').same" class="text-danger">
+                    Las contraseñas ingresadas no coinciden.
+                </span>
+            </div>
+            <div class="form-group alert alert-danger mb-3" *ngIf="errors.length > 0">
+                <label class="text-danger"><b>¡Ocurrió un Error!</b></label>
+                <div *ngFor="let error of errors" class="text-danger">
+                    {{ error }}
+                </div>
+            </div>
+            <button [disabled]="!formRegistrarse.valid || creando" type="submit" class="btn btn-success float-right mt-0">Registrarse</button>
+        </form>
+    </div>
+</div>

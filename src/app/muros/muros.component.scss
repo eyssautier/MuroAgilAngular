@@ -1,0 +1,37 @@
+.barraSuperior {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.barraSuperior div {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.barraSuperior a {
+    width: 8em;
+    float: right;
+    font-size: 14px;
+    margin: 0px;
+    padding: 3px;
+}
+
+#tablaMuros {
+    margin-bottom: 0px;
+    width: 100%;
+}
+
+.grillaAcciones {
+    padding: 0px;
+    padding-bottom: 4px;
+}
+
+.grillaAcciones button, .grillaAcciones a {
+    width: 6em;
+    font-size: 12px;
+    padding: 3px 8px;
+    margin-top: 4px;
+    margin-left: 2px;
+    margin-right: 2px;
+}

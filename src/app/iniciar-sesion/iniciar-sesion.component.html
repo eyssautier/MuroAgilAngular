@@ -1,0 +1,43 @@
+<div class="card border-primary contenedor">
+    <div class="card-header text-white bg-primary">
+        <strong>¡Iniciar Sesión!</strong>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="iniciarSesion()" novalidate>
+            <div class="form-group">
+                <label [class.text-danger]="getError('correo')">Correo Electrónico</label>
+                <input formControlName="correo" [class.is-invalid]="getError('correo')" class="form-control" type="email"/>
+                <span *ngIf="getError('correo') && getError('correo').required" class="text-danger">
+                    Se requiere el ingreso del correo electrónico.
+                </span>
+                <span *ngIf="getError('correo') && getError('correo').email" class="text-danger">
+                    Correo electrónico con formato inválido.
+                </span>
+            </div>
+            <div class="form-group">
+                <label [class.text-danger]="getError('contrasenna')">Contraseña</label>
+                <input formControlName="contrasenna" [class.is-invalid]="getError('contrasenna')" class="form-control" type="password"/>
+                <span *ngIf="getError('contrasenna') && getError('contrasenna').required" class="text-danger">
+                    Se requiere el ingreso de la contraseña.
+                </span>
+            </div>
+            <div class="form-group alert alert-danger mb-3" *ngIf="errors.length > 0">
+                <label class="text-danger"><b>¡Ocurrió un Error!</b></label>
+                <div *ngFor="let error of errors" class="text-danger">
+                    {{ error }}
+                </div>
+            </div>
+            <button [disabled]="!form.valid || iniciando" type="submit" class="btn btn-success float-right mt-0">Iniciar Sesión</button>
+        </form>
+        <table>
+            <tr>
+                <td>
+                    <a [routerLink]="['/registrarse']" class="text-secondary">¡Registrarse!</a>
+                </td>
+                <td>
+                    <a [routerLink]="['/recuperarContrasenna']" class="text-secondary">Recuperar Contraseña</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
