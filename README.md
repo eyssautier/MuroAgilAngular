@@ -1,4 +1,10 @@
-# MuroAgil
+# Muro Ágil Angular
+
+Versión frontend de la aplicación Muro Ágil, desarrollada con Angular 8.
+
+- Consume los servicios del proyecto Muro Ágil API para comunicarse con el backend.
+
+## Angular CLI
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
 
